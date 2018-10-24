@@ -25,6 +25,7 @@ img_height = X_train.shape[2]
 model=Sequential()
 model.add(Flatten(input_shape=(img_width,img_height))) #2D to 1D array
 model.add(Dense(1)) #We have 1 perceptron, densely connected. Every input from old layer goes into 1 perceptron (how many outputs)
+#model.add(Dense(1,activation="sigmoid")) #Map output between 0 and 1, this is our activation func
 #how do we measure how far we stray from the truth, mse = mean squared error.
 #Need to minimize loss
 model.compile(loss='mse', optimizer='adam',

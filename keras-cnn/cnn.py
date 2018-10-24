@@ -1,6 +1,6 @@
 from keras.datasets import mnist
 from keras.models import Sequential
-from keras.layers import Conv2D, MaxPooling2D, Dropout, Dense, Flatten
+from keras.layers import Conv2D, MaxPooling2D, Dropout, Dense, Flatten #conv and pool come in here
 from keras.utils import np_utils
 from wandb.keras import WandbCallback
 import wandb
@@ -23,7 +23,7 @@ X_train /= 255.
 X_test = X_test.astype('float32')
 X_test /= 255.
 
-#reshape input data
+#reshape input data --> change 2D into 3D, dummy nesting
 X_train = X_train.reshape(X_train.shape[0], config.img_width, config.img_height, 1)
 X_test = X_test.reshape(X_test.shape[0], config.img_width, config.img_height, 1)
 
@@ -42,7 +42,7 @@ model.add(Conv2D(32,
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
 model.add(Dense(config.dense_layer_size, activation='relu'))
-model.add(Dense(num_classes, activation='softmax'))
+model.add(Dense(num_classes, activation='softmax')) #output layer, Dense == num of classes
 
 model.compile(loss='categorical_crossentropy', optimizer='adam',
                 metrics=['accuracy'])

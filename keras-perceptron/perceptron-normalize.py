@@ -15,7 +15,7 @@ config = run.config
 img_width = X_train.shape[1]
 img_height = X_train.shape[2]
 
-# normalize data
+# normalize data --> We want our data between 0 and 1, because initial weights got optimized with this assumption
 X_train = X_train.astype('float32') / 255.
 X_test = X_test.astype('float32') / 255.
 

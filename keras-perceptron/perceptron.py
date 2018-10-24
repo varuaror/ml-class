@@ -27,6 +27,7 @@ num_classes = y_train.shape[1]
 model=Sequential()
 model.add(Flatten(input_shape=(img_width,img_height)))
 model.add(Dense(num_classes, activation='softmax'))
+#categorical_crossentropy will penalize alg for wrong answers, maps better to true probability
 model.compile(loss='categorical_crossentropy', optimizer='adam',
                 metrics=['accuracy'])
 
